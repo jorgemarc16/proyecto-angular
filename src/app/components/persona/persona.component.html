@@ -1,0 +1,81 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <button class="btn btn-primary pull-right" (click)="openModalAdd(add)">Agregar</button>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Documento</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Fecha Inicio</th>
+                        <th>Fecha Fin</th>
+                        <th>Hora Inicio</th>
+                        <th>Hora Fin</th>
+                        <th>Hora Inicio Extra</th>
+                        <th>Hora Fin Extra</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let persona of personas">
+                        <td>{{persona.documento}}</td>
+                        <td>{{persona.nombre}}</td>
+                        <td>{{persona.apellido}}</td>
+                        <td>{{persona.fecha_inicio}}</td>
+                        <td>{{persona.fecha_fin}}</td>
+                        <td>{{persona.hora_inicio}}</td>
+                        <td>{{persona.hora_fin}}</td>
+                        <td>{{persona.hora_inicio_extra}}</td>
+                        <td>{{persona.hora_fin_extra}}</td>
+                        <td>
+                            <button class="btn btn-success">Agregar</button>
+                            <button class="btn btn-success">Agregar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<ng-template #add>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">Modal</h4>
+        <button type="button" class="close pull-right" aria-label="Cerrar" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form>
+            <label for="documento">Documento</label>
+            <input type="text" class="form-control" name="documento" [(ngModel)]="persona.documento">
+            <p class="text-danger">{{errorMsg.documento}}</p>
+            <label for="nombre">Nombre</label>
+            <input type="text" class="form-control" name="nombre" [(ngModel)]="persona.nombre">
+            <p class="text-danger">{{errorMsg.nombre}}</p>
+            <label for="apellido">Apellido</label>
+            <input type="text" class="form-control" name="apellido" [(ngModel)]="persona.apellido">
+            <p class="text-danger">{{errorMsg.apellido}}</p>
+            <label for="fecha_inicio">Fecha Inicio</label>
+            <input type="text" class="form-control" name="fecha_inicio" [(ngModel)]="persona.fecha_inicio">
+            <p class="text-danger">{{errorMsg.fecha_inicio}}</p>
+            <label for="fecha_fin">Fecha Fin</label>
+            <input type="text" class="form-control" name="fecha_fin" [(ngModel)]="persona.fecha_fin">
+            <p class="text-danger">{{errorMsg.fecha_fin}}</p>
+            <label for="hora_inicio">Hora Inicio</label>
+            <input type="text" class="form-control" name="hora_inicio" [(ngModel)]="persona.hora_inicio">
+            <p class="text-danger">{{errorMsg.hora_inicio}}</p>
+            <label for="hora_fin">Hora Fin</label>
+            <input type="text" class="form-control" name="hora_fin" [(ngModel)]="persona.hora_fin">
+            <p class="text-danger">{{errorMsg.hora_fin}}</p>
+            <label for="hora_inicio_extra">Hora Inicio Extra</label>
+            <input type="text" class="form-control" name="hora_inicio_extra" [(ngModel)]="persona.hora_inicio_extra">
+            <p class="text-danger">{{errorMsg.hora_inicio_extra}}</p>
+            <label for="hora_fin_extra">Hora Fin Extra</label>
+            <input type="text" class="form-control" name="hora_fin_extra" [(ngModel)]="persona.hora_fin_extra">
+            <p class="text-danger">{{errorMsg.hora_fin_extra}}</p>
+
+            <button class="btn btn-primary" (click)="onSave()">Guardar</button>
+        </form>
+    </div>
+</ng-template>
